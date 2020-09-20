@@ -418,6 +418,7 @@ class LineAllFund extends React.Component {
       //this.getLiffid = this.getLiffid.bind(this);
       this.filterShow=this.filterShow.bind(this);
       //this.ChangeLiffid=this.ChangeLiffid.bind(this);
+      this.all_fund_data=this.all_fund_data.bind(this);
       this.state = {
         fund_id1:'',
         fund_id2:'',
@@ -454,6 +455,36 @@ class LineAllFund extends React.Component {
   componentDidMount() {
     this.getAllFundData();
   }
+
+    //轉變FUND 資料
+  all_fund_data(fund_info){
+      let fund_info_href=[]
+      for(var i=0;i<Object.keys(fund_info).length;i++){
+                let updown_color = 'red'
+                let yb_color = 'red'
+                let M_color = 'red'
+                if (fund_info[i].Ups_and_Downs < 0)
+                    updown_color='green'
+                if (fund_info[i].History_ROI_YB < 0)
+                    yb_color='green'
+                if (fund_info[i].History_ROI_3M < 0)
+                    M_color='green'
+              fund_info_href.push(
+                {'FundID':fund_info[i].FundID,
+                  'Fund_CH_Name':fund_info[i].Fund_CH_Name,
+                  'Fund_fld022':fund_info[i].Fund_fld022,
+                  'Fund_Zone':fund_info[i].Fund_Zone,
+                  'Fund_Currency':fund_info[i].Fund_Currency,
+                  'Fund_Type':fund_info[i].Fund_Type,
+                  'History_ROI_YB':<font color={yb_color}>{fund_info[i].History_ROI_YB}</font>,
+                  'History_ROI_3M':<font color={M_color}>{fund_info[i].History_ROI_3M}</font>,
+                  'Last_Update':fund_info[i].Last_Update,
+                  'History_NetWorth':fund_info[i].History_NetWorth,
+                  'Ups_and_Downs':<font color={updown_color}>{fund_info[i].Ups_and_Downs}</font>
+                  });
+              };
+          return fund_info_href
+    }
   getAllFundData(){
     let fund_info=[];
     //除淨值的資料
@@ -479,7 +510,7 @@ class LineAllFund extends React.Component {
             fund_info=JSON.parse(jsonData.fund_info)
             //console.log(fund_info);
 
-            this.state.all_data=fund_info
+            this.state.all_data=this.all_fund_data(fund_info)
             this.setState({all_data:this.state.all_data,flag:true})
         }
           else{
@@ -695,7 +726,7 @@ class LineAllFund extends React.Component {
             <Col xs={4} sm>
             <TextField
                 id="roi3M"
-                label="三個月報酬區間"
+                label="三個月ROI"
                 select
                 value={this.state.roi3M}
                 margin="normal"
@@ -779,8 +810,8 @@ class LineAllFund extends React.Component {
                 this.props.history.push({
                
                   pathname: '/line-detailfund/fundid='+rowData.Fund_fld022,
-                  state: { member_ID: this.state.member_id }
-                  //state: { member_ID: 4 }
+                  //state: { member_ID: this.state.member_id }
+                  state: { member_ID: 4 }
                   
                 })
                

@@ -716,6 +716,635 @@
     }
 }
 
+.line-allfund-menu{
+    background-color:#f6f6f6;
+    //min-height: 1000px;
+    min-height:100%;
+    .line-sub-bar{
+        min-height:43px;
+    }
+    .line-sub-menu{
+        background-color:#f6f6f6;
+        width: AUTO;
+        position: relative;
+        font-family: Microsoft JhengHei;
+
+        .line-sub-sub-ranking{
+
+            background-color:#F8EDEB;
+            width: 420px;
+            min-height: 400px; //待刪除
+            padding: 20px;
+            margin-top: 150px;
+            margin-bottom: 50px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+        
+            
+            .line-fund-ranking{
+                color: #E5989B;
+                font-size: 25px;
+                font-weight:bold;
+                position: relative;
+                text-align:center;
+            }
+    
+            .line-link-top {
+                width: 90%;
+                height: 1px;
+                border-top: solid #E5989B 2.8px;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 2px;
+                opacity: 75%;
+            }
+
+        }
+
+       
+
+        .line-sub-sub-detail{
+            background-color:#f6f6f6;
+            // border-radius: 15px;
+            // margin-top: 150px;
+            // padding:0px;
+            // transform: translateX(12%);
+            width: 100%;
+            .line-button-position{
+                //padding-top:20px;
+                //padding-right:35px;
+                //padding-left:35px;
+                //transform: translateX(50%);
+                //margin: 0 auto;
+                padding-left:45px; 
+                width:30%
+            }
+            .line-fund-name-position-1{
+                display: inline-block;
+               .line-fund-name{
+                padding-left:20px;
+                color:  rgb(0, 68, 135);
+                //width: 620px;
+                width:100%;
+                font-weight:bold;
+                font-size: 33px;
+                //padding-left:35px;
+                padding-top:20px;
+                font-family:Microsoft JhengHei;
+                //margin-bottom: -2px;
+                
+                } 
+            }
+            .line-fund-name-position-2{
+                display: inline-block;
+                padding-left:20px;
+            }
+            
+            .line-fund-currency-position{
+                padding-left:20px;
+                
+            }
+            
+            .line-fund-percentage-position{
+                padding-left:20px;
+            }
+            .line-tag-position{
+                //width: 620px; 
+                //margin-left: 50px;
+                width:90%;
+                padding-left:20px;
+                padding-top:10px;
+                font-family:Microsoft JhengHei;
+                .line-tag-label-position{
+                    //padding-top:5px;
+                    display: inline-block;
+                    margin: 5px;
+
+                }
+            }
+
+            .line-tag-label{
+                height: 30px;
+                font-size: 15px;
+                margin-left: 9px;
+                margin-top: 35px;
+                font-family:Microsoft JhengHei;
+                font-weight:bold;
+                border-style:dotted;
+                border-radius: 10px;
+                padding: 0px 3px;
+                background-color:#ffffff;
+                .line-delete-tag{
+                    font-family:Microsoft JhengHei;
+                    font-weight:bold;
+
+                }
+                
+            }
+
+            .line-followBtnTrue { //已追蹤
+                //width: 80px;
+                min-width:70px;
+                width:80%;
+                height: 40px;
+                border-radius: 20px;
+                border:rgb(0, 68, 135) solid 2px;
+                background-color:rgb(0, 68, 135);
+                margin-top: 5px;
+                //margin-left: 15px;
+                outline:none;
+                color:  #F8EDEB;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+              
+            .line-followBtnFalse { //未追蹤
+                min-width:70px;
+                width:80%;
+                height: 40px;
+                border-radius: 20px;
+                border:rgb(0, 68, 135) solid 2px;
+                background-color:rgb(196, 215, 233);
+                margin-top: 5px;
+                outline:none;
+                color:  rgb(0, 68, 135);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                
+            }
+
+            .line-followBtnFalse:hover{
+                background-color: rgb(0, 68, 135);
+                color: #F8EDEB;
+            }
+
+            .line-fund-value-red{
+                color: 	#ff0000;
+                font-size: 50px;
+                //margin-left: 120px;
+                font-weight:bold;
+                margin-bottom: -8px;
+            }
+            .line-fund-value-green{
+                color: #208306;
+                font-size: 50px;
+                //margin-left: 120px;
+                font-weight:bold;
+                margin-bottom: -8px;
+            }
+
+            .line-fund-currency{
+                color: rgb(0, 68, 135);
+                font-size: 22px;
+                //margin-left: 40px;
+                //margin-top: 23px;
+                font-family:Microsoft JhengHei;
+                font-weight:500;
+                padding-left: 5px;
+            }
+
+            .line-fund-percentage-red{
+                width:100%;
+                color: 	#ff0000;
+                font-size: 15px;
+                //margin-left: 30px;
+                margin-top: 12px;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+            .line-fund-percentage-green{
+                width:100%;
+                color:#208306;
+                font-size: 15px;
+                //margin-left: 30px;
+                margin-top: 12px;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+
+            .line-fund-data span{
+                color: #1a5da0;
+                font-size: 18px;
+                font-family:Microsoft JhengHei;
+                padding-top:7px;
+                padding-left:35px;
+                padding-right:25px;
+                font-weight:bold;
+            }
+
+        }
+
+        .line-sub-sub-graphics{
+            background-color:#FFFFFF;
+            border-radius: 15px;
+            margin-top: 30px;
+            transform: translateX(12%);
+            width: 80%;
+            .line-sub-sub-graphics-title{
+                padding-left:40px;
+                padding-top:10px;
+                padding-bottom: 10px;
+            }
+            .line-sub-sub-graphics-btn{
+                //padding-left:8px;
+                //padding-top:5px;
+                //padding-bottom: 5px; 
+                //padding-top:10px;
+                //padding-bottom: 10px;
+            }
+
+            .line-net-worth-label{
+                width: 150px;
+                height: 45px;
+                border-radius: 10px;
+                border:rgb(0, 68, 135) solid 2px;
+                background-color: rgb(0, 68, 135);
+                color: #FFFFFF;
+                margin-top: 30px;
+                //margin-left: 75px;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .line-net-worth-graph{
+                width: 800px;
+                height: 300px;
+             // fill: #ffffff;
+                background-color: #ffffff;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                transform: translateX(9%); 
+            }
+            
+            .line-chart {
+                transform: translateX(17%);
+                width: 75%;
+                margin-top: 10px;
+                margin-bottom: 30px;
+            }
+
+            #line-performance-btn{
+                width: 90px;
+                height: 35px;
+                border:rgb(2, 90, 179) solid 2px;
+                background-color:rgb(196, 215, 233);
+                margin-top:15px;
+                //margin-left: 75px;
+                //padding-left: 15px;
+                outline:none;
+                color:  rgb(2, 90, 179);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+
+            #line-risk-btn{
+                width: 90px;
+                height: 35px;
+                border:rgb(2, 90, 179) solid 2px;
+                background-color:rgb(196, 215, 233);
+                margin-top: 15px;
+                margin-left: -2px;
+                outline:none;
+                color:  rgb(2, 90, 179);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+
+            #line-performance-btn:focus {
+                background-color: rgb(2, 90, 179);
+                color: #FFFFFF;
+              }
+            
+            #line-risk-btn:focus {
+                background-color: rgb(2, 90, 179);
+                color: #FFFFFF;
+            }
+            #line-chart2{
+                display: none;
+            }
+        }
+
+        .line-sub-sub-tag{
+            background-color:#FFFFFF;
+            border-radius: 15px;
+            margin-top: 20px;
+            transform: translateX(5%);
+            width: 90%;
+            display: inline;
+            padding:15px 15px;
+            
+            .line-input-tag{
+                
+                background-color:rgb(196, 215, 233);
+                border-radius: 15px;
+                width: 90%;
+                height: 42px;
+                //margin-left: -20px;
+                //margin-top:13px;
+                //transform: translateX(20%);
+                
+            }
+            .line-input-fieled{
+                border-top-style: hidden;
+                border-right-style: hidden;
+                border-left-style: hidden;
+                border-bottom-style: hidden;
+                background-color:transparent;
+                outline: none;
+                margin-left: 20px;
+                margin-top: 10px;
+                width:100%;
+            }
+
+            .line-tag-table{
+               // border: 2px #F8EDEB solid;
+                border:#e26d5c solid 1px;
+              //  margin:0 auto;
+                margin-top: 30px;
+                margin-left: 150px;
+            }
+
+            .line-tag-table tr{
+                display: block;
+              //  float: left;
+            }
+
+            .line-tag-table th{
+                font-size: 20px;
+                padding: 5px 15px;
+                color: #F8EDEB;
+                font-weight:bold;
+                text-align:center;
+                background: #e26d5c;
+                display: block;
+                font-family:Microsoft JhengHei;
+                
+            }
+            .line-tag-table td{
+                font-size: 20px;
+                padding: 5px 20px 5px 35px;
+                color: #e26d5c;
+              //  text-align:center;
+                font-weight:bold;
+                background: #F8EDEB;
+                display: block;
+                font-family:Microsoft JhengHei;
+            }
+
+            .line-tag-table label{
+                font-weight: 100;
+                margin-right: 30px;
+            }
+            .line-input-tag-btn{
+                margin:0 auto;
+            }
+            .line-tag-btn{
+                width: 95%;
+                height: 40px;
+                border-radius: 20px;
+                border:rgb(0, 68, 135) solid 2px;
+                background-color:rgb(196, 215, 233);
+                outline:none;
+                color:  rgb(0, 68, 135);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+            .line-tag-btn-hidden{
+                width: 95%;
+                height: 20%;
+                border-radius: 20px;
+                border:0px;
+                background-color: transparent;
+                outline:none;
+                color:  rgb(0, 68, 135);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                padding-top: 0px
+            }
+            .line-tag-btn:hover{
+                background-color: rgb(0, 68, 135);
+                color: #FFFFFF;
+            }
+            .line-tag-btn a{
+                color: inherit;
+            }
+           
+        }
+
+        .line-sub-sub-basic-info{
+            background-color:#FFFFFF;
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            transform: translateX(5%);
+            width: 90%;
+            padding:15px 15px;
+            
+            .line-fund-basic-info{
+                border: 2px #FFFFFF solid;
+                //border: 2px #ffffff00 solid;
+                margin:0 auto;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                //overflow-wrap: break-word;
+                
+            }
+
+            .line-fund-basic-info tr{
+                display: block;
+                float: left;
+            }
+
+            .line-fund-basic-info th{
+                font-size: 20px;
+                padding: 5px 15px;
+                color: #FFFFFF;
+                font-weight:bold;
+                text-align:left;
+                background: rgb(0, 68, 135);
+                display: block;
+                font-family:Microsoft JhengHei;
+                border:rgb(0, 68, 135) solid 1px;
+                
+                
+            }
+
+            .line-fund-basic-info td{
+                font-size: 20px;
+                font-weight: 600;
+                width: 300px;
+                padding: 5px 20px 5px 20px;
+                color: #000000;
+              // text-align:center;
+                background: #FFFFFF;
+                border:rgb(0, 68, 135) solid 1px;
+                font-family:Microsoft JhengHei;
+                word-break:break-all;
+                display: block;
+                
+            }
+
+        }
+
+        .line-sub-sub-fund-introduce{
+            background-color:#FFFFFF;
+            border-radius: 15px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            transform: translateX(12%);
+            width: 80%;
+            padding-left:40px;
+            padding-top:20px;
+            .line-teach-content{
+                width:800px;
+                //margin-left: 48px;
+            }
+            .line-introduce-label-position{
+                width: 100%;
+                display: inline-block;
+
+            }
+            .line-teach-btn-position-1{
+                width: 100%;
+                display: inline-block;
+                //margin-left:20px;
+            }
+            .line-teach-btn-position{
+                width: 30%;
+                display: inline-block;
+                padding-right: 10px;
+                //margin-left:20px;
+            }
+            .line-teach-btn{
+                width: 85px;
+                height: 40px;
+                border-radius: 20px;
+                
+                border:rgb(0, 68, 135) solid 2px;
+                background-color:#ffffff;
+                outline:none;
+                color:  rgb(0, 68, 135);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+            }
+            .line-teach-btn-hidden{
+                width: 150px;
+                height: 10px;
+                border-radius: 20px;
+                
+                border:0px;
+                background-color: transparent;
+                outline:none;
+                color:  rgb(0, 68, 135);
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                padding-top: 0px
+            }
+            .line-teach-btn:hover{
+                background-color:rgb(0, 68, 135);
+                color: #ffffff;
+            }
+            .line-teach-btn:focus{
+                background-color:rgb(0, 68, 135);
+                color: #ffffff;
+            }
+
+            .line-teach-btn a{
+                color: inherit;
+            }
+
+            .line-fund-introduce-label{
+                width: 180px;
+                height: 45px;
+                border-radius: 10px;
+                border:rgb(0, 68, 135) solid 2px;
+                background-color: rgb(0, 68, 135);
+                color: #FFFFFF;
+                //margin-top: 20px;
+                //margin-left: 40px;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 5px;
+            }
+
+            .line-fund-introduce-info{
+                //border: 2px #F8EDEB solid;
+                margin:0 auto;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                margin-left: 10px;
+                margin-right: 10px;
+                font-family:Microsoft JhengHei;
+                font-size: 16px;
+                font-weight: bold;
+                color: #3a3a3a;
+            }
+        }
+
+        .line-compare-fix{
+            //position: fixed;
+            min-height: 100px;
+            bottom: 0;
+            background-color: #f6f6f6;
+            display: inline-block;
+    
+            .line-comparefund-bar{
+                width: 300px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .line-compare-btn{
+                width: 130px;
+                height: 45px;
+                margin-top: 20px;
+                margin-left: 20px;
+                margin-right: 25px;
+                font-size: 20px;
+                background-color: rgb(0, 68, 135);
+                color: #ffffff;
+                border: rgb(0, 68, 135) solid 1px;
+                border-radius: 20px;
+                font-family:Microsoft JhengHei;
+                font-weight:bold;
+            }
+            .line-compare-btn-hidden{
+                width: 150px;
+                height: 10px;
+                border-radius: 20px;
+                margin-left: 20px;
+                margin-top: 0px;
+                margin-bottom: 19px;
+                border:rgb(0, 68, 135) solid 1px;
+                background-color: rgb(207, 229, 252);
+                outline:none;
+                color:  #fff;
+                font-weight:bold;
+                font-family:Microsoft JhengHei;
+                padding-top: 0px
+            }
+            .line-compare-btn:hover{
+                background-color: rgb(0, 68, 135);
+                color: #fff;
+            }
+            .line-compare-btn a{
+                color: inherit;
+            }
+        }
+    }
+}
+
+
+
 .ul-menu{
 
     width: 80%;
