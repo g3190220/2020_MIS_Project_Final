@@ -1,0 +1,276 @@
+.section{
+    padding: 70px 0;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.section-login{
+    min-height: 700px;
+    //background-color: '#fb8b75';
+    background:linear-gradient(#005b9f,transparent);
+    & .go-to-register-btn-position{
+        margin:0px auto;
+        padding-top: 8px;
+        font-size: 10px;
+        
+    }
+    & .go-to-register-btn{
+        a:link {
+            color: rgb(75, 75, 75)5b9f;
+            text-decoration: none;
+        }
+      
+        a:visited {
+            color: rgb(75, 75, 75)5b9f;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: rgb(100, 161, 235)5b9f;
+            text-decoration: none;
+            cursor: pointer; 
+        }
+        
+        a:active {
+            color: rgb(100, 161, 235)5b9f;
+            text-decoration: none;
+        }
+    }
+    
+    
+}
+//--------------豬豬--------------
+#face-wrap {
+    margin: 160px auto 0;
+    width: 160px;
+  }
+  #face-wrap:hover {
+    .eye{
+        top: +60px;
+    
+        width:40px;height:18px;
+        border-radius: 10px;
+        
+      }
+    .eyeball {
+        animation: move_eye  5s linear 5s 2;
+      }
+      .z1{
+        visibility: hidden;
+        animation: sleep  1.5s linear 2s infinite paused;
+    }
+  }
+  #face {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+    background: rgb(255, 200, 200);
+    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+  }
+  
+  .ear {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    background: rgb(255, 200, 200);
+    
+  }
+  #ear-l {
+    left: -20px;
+  }
+  #ear-r {
+    left: +110px;
+  }
+  
+  .eye {
+    top: +75px;
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    background: rgb(255, 250, 250);
+    transition: 1.5s;
+    overflow: hidden;
+  }
+  .eyeball {
+    position: relative;
+    left:48%;
+    top:58%;
+    
+    transform: translateY(-50%);
+    display: block;
+    width:12px;height:12px; //正圓形，所以寬與高都設一樣
+    border-radius:999em;
+    background:black;
+    animation: move_eye  5s linear 5s 2 paused;
+  }
+  @keyframes move_eye{
+    0%{
+        left:40%;
+    }
+    50%{
+        left:20%
+    }
+    100%{
+        left:40%;
+    }
+}
+  #eye-l {
+    left: +20px;
+  }
+  #eye-r {
+    left: +100px;
+  }
+  
+  #nose {
+    position: absolute;
+    top: +75px;
+    left: +45px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background: rgb(250, 160, 160);
+  }
+  .nose {
+    top: +13px;
+    position: absolute;
+    width: 7px;
+    height: 35px;
+    background: rgb(255, 125, 125);
+  }
+  #nose-l {
+    left: +16px;
+  }
+  #nose-r {
+    left: +36px;
+  }
+  
+  
+  /* -- ZZZzzzz -- */
+  .z1{
+        position: absolute;
+        left: 70%;
+        font-family: "jf-openhuninn",'Montserrat','Noto Sans TC', sans-serif;
+        font-size: 60px;
+        font-weight: lighter;
+        line-height: 0px;
+        color: black;
+        display: inline;
+        animation: sleep  0.8s linear 2s infinite;
+        z-index: 1;
+    }
+@keyframes sleep{
+    0%{
+        font-size: 60px;
+        transform:translateY(20px);
+        opacity: 1;
+    }
+    100%{
+        font-size: 90px;
+        transform:translateY(-70px);
+        opacity: 0;
+    }
+}
+  
+//--------------------------------
+.section-carousel{
+    //background-color: '#fb8b75';
+    background-image: linear-gradient(to right, #243949 15%, #517fa4 50%, #243949 85%);
+    padding: 30px 0;
+    .container{
+      margin: auto;
+    }
+    
+    .col{
+        min-width: 350px;
+        padding: 30px 10px 20px 30px;
+        transition: 0.2s;
+        margin-top:20px;
+        margin-bottom:20px;
+        border-radius: 15px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .col:hover{
+        background: rgba(255,255,255,0.3);
+        box-shadow:1px 1px 4px 3px #30d6a4d7;
+        h4{ 
+            transform: translateY(-4px) scale(1.05);
+        }
+    }
+    // 參考https://reurl.cc/GrxDGW
+    .features{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        h4{
+            position: relative;
+            left: 5%;
+            font-family: "jf-openhuninn",'Montserrat','Noto Sans TC', sans-serif;
+            font-size: 30px;
+            color: white;
+            margin: 0px;
+            transition: 0.5s;
+            transform: translateY(0px);
+        }
+        .title_line{
+            width: 60%;
+            opacity: 0.9;
+            height: 3.5px;
+            background:#30d6a4d7;
+            border-radius: 60px;
+            box-shadow: 0em 0em 2em #ffffff;
+            transition: 0.5s;
+        }
+        img{
+            transition: 0.5s;
+        }
+        p{
+            position: relative;
+            top:10px;
+            //position: absolute; 或 float 隱式改成 display: inline-block;
+            font-family: "jf-openhuninn",'Montserrat','Noto Sans TC', sans-serif;
+            color: white;
+            font-size: 22px;
+            display: inline;
+            line-height: 1.8em;
+            vertical-align: middle;
+            transition: 0.3s;
+            word-wrap:break-word;
+        }
+        
+        .feature1{
+            display: inline-block;
+            width: 17%;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+        .feature2{
+            display: inline-block;
+            width: 17%;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+        .feature3{
+            display: inline-block;
+            width: 17%;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+        .feature4{
+            display: inline-block;
+            width: 17%;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+        
+    }
+}
