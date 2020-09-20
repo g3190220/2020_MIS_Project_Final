@@ -81,18 +81,18 @@ class Surveys extends React.Component {
     render() {
 
         return(
-            <div className='surveypage'>
+            <div className='line-surveypage'>
                 <Row>
-                    <div className='survey_title'>投資經驗</div><div className='notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
+                    <div className='line-survey_title'>投資經驗</div><div className='line-notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
                 </Row>
-                    <div className='survey_title_line'></div>
+                    <div className='line-survey_title_line'></div>
                 <Row>
                 </Row>
-                <div id='survey_page'>
+                <div id='line-survey_page'>
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請問您的投資基金的經驗為何？</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請問您的投資基金的經驗為何？</FormLabel>
                         <RadioGroup row={true} aria-label="experience" name="experience" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="沒有經驗" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="1年以下" />
@@ -105,9 +105,9 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請問您曾經或現在投資過那些金融商品(可複選)？</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請問您曾經或現在投資過那些金融商品(可複選)？</FormLabel>
                         <RadioGroup row={true} aria-label="product" name="product" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="台外幣存款、貨幣型基金、儲蓄型保險" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="債券、債券型基金" />
@@ -120,8 +120,9 @@ class Surveys extends React.Component {
                 </Row>
                 
                 <Row>
-                    <button className='previous-btn' onClick={this.handleprevious}>previous</button>
-                    <button className='submit-btn' onClick={this.handlesummit}>next</button>
+                <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious}>previous</button></div>
+                    
+                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>next</button></div>
                 </Row>
                 </div>
             </div>

@@ -510,7 +510,7 @@ class LineAllFund extends React.Component {
             fund_info=JSON.parse(jsonData.fund_info)
             //console.log(fund_info);
 
-            this.state.all_data=this.all_fund_data(fund_info)
+            this.state.all_data=fund_info
             this.setState({all_data:this.state.all_data,flag:true})
         }
           else{

@@ -39,30 +39,31 @@ class Surveys extends React.Component {
 
     //獲取liff id
     getLiffid(){
-        let liff_userid;
-        liff.init({
-        liffId: "1654887866-BeAzZ7ov" // Use own liffId
-        })
-        .then(() => {
-        if (liff.isLoggedIn()) {
-            liff.getProfile()
-            .then(profile => {
-                const userId = profile.userId
-                //取得liff_userid;
-                liff_userid=userId;
-            })
-            .then(()=>{this.setState({liff_userid:liff_userid,flag:true})})
-            .then(()=>{
-            //獲取liff id
-            console.log("getLiffid()後")
-            console.log(this.state.liff_userid)
-                this.ChangeLiffid()
-            })
-            }
-        else{
-            alert("取得失敗")
-        }
-        })
+        // let liff_userid;
+        // liff.init({
+        // liffId: "1654887866-BeAzZ7ov" // Use own liffId
+        // })
+        // .then(() => {
+        // if (liff.isLoggedIn()) {
+        //     liff.getProfile()
+        //     .then(profile => {
+        //         const userId = profile.userId
+        //         //取得liff_userid;
+        //         liff_userid=userId;
+        //     })
+        //     .then(()=>{this.setState({liff_userid:liff_userid,flag:true})})
+        //     .then(()=>{
+        //     //獲取liff id
+        //     console.log("getLiffid()後")
+        //     console.log(this.state.liff_userid)
+        //         this.ChangeLiffid()
+        //     })
+        //     }
+        // else{
+        //     alert("取得失敗")
+        // }
+        // })
+        this.setState({liff_userid:"Uabcd7eb5beccfbac50a8434c2e4072fc",flag:true})
         
     }
     //檢查Liff有無連接，並回傳userid
@@ -154,18 +155,18 @@ class Surveys extends React.Component {
     render() {
 
         return(
-            <div className='surveypage'>
+            <div className='line-surveypage'>
                 <Row>
-                    <div className='survey_title'>個人資料</div><div className='notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
+                    <div className='line-survey_title'>個人資料</div><div className='line-notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
                 </Row>
-                    <div className='survey_title_line'></div>
+                    <div className='line-survey_title_line'></div>
                 <Row>
                 </Row>
                 <div id='survey_page'>
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請選擇 您的年齡區間</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請選擇 您的年齡區間</FormLabel>
                         <RadioGroup row={true} aria-label="age-range" name="age" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="未滿 20 歲/70 歲(含)以上" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="60 歲(含)以上〜70 歲" />
@@ -178,9 +179,9 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請選擇 您的職業</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請選擇 您的職業</FormLabel>
                         <RadioGroup row={true} aria-label="job" name="job" onChange={this.handleChange}>
                         <FormControlLabel value="待業中" control={<Radio color="primary" />} label="待業中" />
                         <FormControlLabel value="學生" control={<Radio color="primary" />} label="學生" />
@@ -197,9 +198,9 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請選擇 您的年所得區間</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請選擇 您的年所得區間</FormLabel>
                         <RadioGroup row={true} aria-label="income" name="income" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="50 萬以下" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="50 萬(含)〜100 萬" />
@@ -212,9 +213,9 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請選擇 您的最高學歷</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>請選擇 您的最高學歷</FormLabel>
                         <RadioGroup row={true} aria-label="education" name="education" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="識字有限" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="國中含以下" />
@@ -227,7 +228,9 @@ class Surveys extends React.Component {
                 </Row>
                 
                 <Row>
-                    <button className='submit-btn' onClick={this.handlesummit}>next</button>
+                
+                    
+                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>next</button></div>
                 </Row>
                 </div>
             </div>

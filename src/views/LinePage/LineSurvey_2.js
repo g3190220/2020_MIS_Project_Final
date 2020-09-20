@@ -19,7 +19,7 @@ class Surveys extends React.Component {
             time:'',
             method:'',
             Single:null, //願意投資的金額
-            method_css:'method_space',
+            method_css:'line-method_space',
             method_type:'您單筆想要投資多少錢？',
             score:load_cookies("score_1"),
             score_page:0
@@ -116,14 +116,14 @@ class Surveys extends React.Component {
             if(event.target.value=='單筆'){
                 this.setState((state, props) => {
                     return {method_type:'您單筆想要投資多少錢？',
-                            method_css:'problem_space'
+                            method_css:'line-problem_space'
                     };
                 });
             }
             else if(event.target.value=='定期定額'){
                 this.setState((state, props) => {
                     return {method_type:'您想要定期定額每年投資多少錢？',
-                            method_css:'problem_space'
+                            method_css:'line-problem_space'
                     };
                 });
             }
@@ -141,18 +141,18 @@ class Surveys extends React.Component {
     render() {
 
         return(
-            <div className='surveypage'>
+            <div className='line-surveypage'>
                 <Row>
-                    <div className='survey_title'>投資目的</div><div className='notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
+                    <div className='line-survey_title'>投資目的</div><div className='line-notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
                 </Row>
-                    <div className='survey_title_line'></div>
+                    <div className='line-survey_title_line'></div>
                 <Row>
                 </Row>
-                <div id='survey_page'>
+                <div id='line-survey_page'>
                 <Row>
-                    <div className='problem_space'>
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>請問您投資金融商品最主要的考量因素為何？</FormLabel>
+                    <div className='line-problem_space'>
+                    <FormControl component="line-fieldset">
+                        <FormLabel component="line-legend" className='line-problem_title'>請問您投資金融商品最主要的考量因素為何？</FormLabel>
                         <RadioGroup row={true} aria-label="factor" name="factor" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="儲蓄（保本不虧錢）" />
                         <FormControlLabel value="6" control={<Radio color="primary" />} label="有穩定收入（賺小錢）" />
@@ -163,7 +163,7 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>請問您投資目的為何？</FormLabel>
                         <RadioGroup row={true} aria-label="purpose" name="purpose" onChange={this.handleChange}>
@@ -178,7 +178,7 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>您希望在多久以內達到期望報酬</FormLabel>
                         <RadioGroup row={true} aria-label="time" name="time" onChange={this.handleChange}>
@@ -192,7 +192,7 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>您想要的投資方式</FormLabel>
                         <RadioGroup row={true} aria-label="method" name="method" onChange={this.handleChange}>
@@ -204,7 +204,7 @@ class Surveys extends React.Component {
                 </Row>
                 <div className={this.state.method_css}>
                 <Row> 
-                     <span className='problem_title'>{this.state.method_type}</span>
+                     <span className='line-problem_title'>{this.state.method_type}</span>
                 </Row>
                 <Row>
                     <TextField 
@@ -221,8 +221,10 @@ class Surveys extends React.Component {
                 </div>
                 
                 <Row>
-                    <button className='previous-btn' onClick={this.handleprevious}>previous</button>
-                    <button className='submit-btn' onClick={this.handlesummit}>next</button>
+                    <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious}>previous</button></div>
+                    
+                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>next</button></div>
+                    
                 </Row>
                 </div>
             </div>

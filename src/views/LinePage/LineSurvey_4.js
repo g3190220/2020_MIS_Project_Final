@@ -140,16 +140,16 @@ class Surveys extends React.Component {
     render() {
 
         return(
-            <div className='surveypage'>
+            <div className='line-surveypage'>
                 <Row>
-                    <div className='survey_title'>風險承受力評估</div><div className='notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
+                    <div className='line-survey_title'>風險承受力評估</div><div className='line-notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
                 </Row>
-                    <div className='survey_title_line'></div>
+                    <div className='line-survey_title_line'></div>
                 <Row>
                 </Row>
                 <div id='survey_page'>
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>假如你今天有(100萬元)要拿去投資基金，請問你最多可以接受多少錢的損失？</FormLabel>
                         <RadioGroup row={true} aria-label="lose" name="lose" onChange={this.handleChange}>
@@ -164,7 +164,7 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>呈上題，如果你損失超過(15萬元)，對你的生活影響程度為？</FormLabel>
                         <RadioGroup row={true} aria-label="affect" name="affect" onChange={this.handleChange}>
@@ -179,7 +179,7 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
                         <FormLabel component="legend" className='problem_title'>當你賺多少錢之後才會想把基金賣出？</FormLabel>
                         <RadioGroup row={true} aria-label="profit" name="profit" onChange={this.handleChange}>
@@ -194,8 +194,9 @@ class Surveys extends React.Component {
                 </Row>
                 
                 <Row>
-                    <button className='previous-btn' onClick={this.handleprevious}>previous</button>
-                    <button className='submit-btn' onClick={this.handlesummit}>next</button>
+                <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious}>previous</button></div>
+                    
+                <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>next</button></div>
                 </Row>
                 </div>
             </div>

@@ -120,18 +120,18 @@ class Surveys extends React.Component {
     render() {
 
         return(
-            <div className='surveypage'>
+            <div className='line-surveypage'>
                 <Row>
-                    <div className='survey_title'>風險偏好評估</div><div className='notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
+                    <div className='line-survey_title'>風險偏好評估</div><div className='line-notice_title'>※本網站不會將資料以任何形式外洩，僅用分析使用者投資偏好</div>
                 </Row>
-                    <div className='survey_title_line'></div>
+                    <div className='line-survey_title_line'></div>
                 <Row>
                 </Row>
                 <div id='survey_page'>
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>當您的投資超過你可以接受的損失時（停損點），你會採取那種處置方式？</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>當您的投資超過你可以接受的損失時（停損點），你會採取那種處置方式？</FormLabel>
                         <RadioGroup row={true} aria-label="dealwith-lose" name="dealwith-lose" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="立即賣出所有部位" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="先賣出一半或一半以上部位" />
@@ -144,9 +144,9 @@ class Surveys extends React.Component {
                 </Row>
 
                 <Row>
-                    <div className='problem_space'>
+                    <div className='line-problem_space'>
                     <FormControl component="fieldset">
-                        <FormLabel component="legend" className='problem_title'>當您的投資達到你預先設定的目標利益（停利點），請問您會採取那種處置方式？</FormLabel>
+                        <FormLabel component="legend" className='line-problem_title'>當您的投資達到你預先設定的目標利益（停利點），請問您會採取那種處置方式？</FormLabel>
                         <RadioGroup row={true} aria-label="dealwith-profit" name="dealwith-profit" onChange={this.handleChange}>
                         <FormControlLabel value="2" control={<Radio color="primary" />} label="立即賣出所有部位" />
                         <FormControlLabel value="4" control={<Radio color="primary" />} label="先賣出一半或一半以上部位" />
@@ -159,8 +159,9 @@ class Surveys extends React.Component {
                 </Row>
                 
                 <Row>
-                    <button className='previous-btn' onClick={this.handleprevious}>previous</button>
-                    <button className='submit-btn' onClick={this.handlesummit}>submit</button>
+                <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious}>previous</button></div>
+                    
+                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>sunbmit</button></div>
                 </Row>
                 </div>
             </div>
