@@ -34,7 +34,6 @@ class Surveys extends React.Component {
 
             if((this.state.lose!='')&&(this.state.affect!='')&&(this.state.profit!='')){
                  const member_id=load_cookies("member_id");
-                //  const path=`/page-survey-5/id=${member_id}`
                  const path=`/page-survey-5`
                 //將此頁的分數紀錄到cookie
                  let arr = []
@@ -88,10 +87,12 @@ class Surveys extends React.Component {
                     if(year != 10){
                         expect_return = (this.state.invest_money/p)-(this.state.invest_money/s)
                     }
-                    console.log(this.state.invest_money/p)
-                    console.log(this.state.invest_money/s)
                 }
-                survey_answer(expect_return);
+                console.log("expect_return = "+ expect_return)
+                let arr2 = []
+                arr2.push(expect_return)
+                arr2.push(this.state.invest_method)
+                survey_answer(arr2);
                 //-----------------------------------------
 
                  this.props.history.push({

@@ -33,7 +33,6 @@ class Surveys extends React.Component {
             if((this.state.dealwith_lose!='')&&(this.state.dealwith_profit!='')){
 
                  const member_id=load_cookies("member_id");
-                //  const path=`/page-characterAnalysis/id=${member_id}`
                  const path=`/page-characterAnalysis`
 
                  this.props.history.push({
@@ -48,55 +47,51 @@ class Surveys extends React.Component {
                  arr.push(load_cookies("method"))
                  arr.push(total)
                  survey_answer(arr);
-
+                 console.log(arr)
+                    
                  if(total <= 34){
-                    ans = '您的結果為：保守型';
                     result = '保守型'
                  }
                  else if(total <=45){
-                    ans = '您的結果為：穩健型';
                     result = '穩健型'
                  }
                  else if(total <=58){
-                    ans = '您的結果為：成長型';
                     result = '成長型'
                 }
                 else{
-                    ans = '您的結果為：積極型';
                     result = '積極型'
                 }
-                alert(ans);
+                alert('性格分析問券填寫完畢！')
+
+                //-----------更新或新增性格分析結果-----------------------------------------------------------------
+                const url = "https://fundu.ddns.net:8090/set_characteristic";////////改url
+                console.log(load_cookies("ROI"))
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            memberID: load_cookies("member_id"),
+                            exceptedreturn: load_cookies("ROI"),
+                            characteristic:result,
+                            score: total,
+                        })
+                    })
+                    .then((response) => {return response.json();})
+                    .then((jsonData) => {
+                    //console.log(this)
+                    console.log(jsonData)
+                    if(jsonData.StatusCode==200){
+                        //關閉Line liff
+                        liff.closeWindow();
+                    }
+                    })
             }
             else{
                 alert('請完全填選後再按下一頁！')
             }
-
-            //-----------更新或新增性格分析結果-----------------------------------------------------------------
-            const url = "https://fundu.ddns.net:8090/set_characteristic";////////改url
-            //console.log(data)
-            fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        memberID: load_cookies("member_id"),
-                        exceptedreturn: 100,
-                        characteristic:result,
-                        score: total,
-                    })
-                })
-                .then((response) => {return response.json();})
-                .then((jsonData) => {
-                //console.log(this)
-                console.log(jsonData)
-                if(jsonData.StatusCode==200){
-                    alert("更改成功！")
-                    //關閉Line liff
-                    liff.closeWindow();
-                }
-                })
     }
     //-------------------上一頁------------------------------
     handleprevious(){

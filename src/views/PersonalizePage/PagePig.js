@@ -25,6 +25,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import FindInPageIcon from '@material-ui/icons/PageviewOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import NotesIcon from '@material-ui/icons/Notes';
+import LoadingIndicator from "views/Function/LoadingIndicator.js";
 
 import { forwardRef } from 'react';
 
@@ -76,6 +77,7 @@ class PagePig extends React.Component{
           is_recommendation:false, //預設未做過性格分析測驗
           method:'',
           roi:'',
+          flag:false,
           columns:[
             {title: '基金統編', field: '3' },
             {title: '基金名稱',field: '0'},
@@ -165,20 +167,20 @@ class PagePig extends React.Component{
             try{
                 data=JSON.parse(jsonData.info)
                 if(jsonData.StatusCode==200){
-                    
-                    //console.log(data[0].Member_characteristic)
     
                     //更新state並獲得以下資料
                     this.setState((state, props) => {
                         return {counter: state.counter + props.step,
                                 method:data[0].Member_characteristic,
                                 roi:data[0].Member_exceptedreturn,
+                                is_recommendation:true,
                                 recommendation_text:'本系統透過性格分析測驗以及AI預測基金的結果提供使用者最適配的基金。',
                                 };
                     });
                 }
             }
-            catch(e){ //若是沒有做過性格分析測驗則只給純預測淨值排名
+            catch(e){
+                alert('尚未做過性格測驗')
             }
             })
             .then(() => { this.getFundData();})
@@ -187,39 +189,56 @@ class PagePig extends React.Component{
       }
       //-------------------------------------------------------------------
 
-      //------------取得推薦基金--------------------------------------------
+      //------------取得個人化推薦基金--------------------------------------------
       getFundData(){
-        console.log('123'+this.state.method)
+
         let fund_info=[];
-        const url = "https://fundu.ddns.net:8090/fundrecommendation";
+        if(this.state.is_recommendation){
+            const url = "https://fundu.ddns.net:8090/fundrecommendation";
 
-        fetch(url, {
-                  method: 'POST',
-                  headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                        risk:this.state.method, //風險分級
-                        roi:this.state.roi      //預期報酬
-                  })
-                  
-            })
-            .then((response) => {return response.json();})
-            .then((jsonData) => { 
-              if(jsonData.StatusCode==200){
-
-                console.log('取得推薦')
-                fund_info=jsonData.recommendation;
-                console.log(fund_info);
+            fetch(url, {
+                      method: 'POST',
+                      headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                            risk:this.state.method, //風險分級
+                            roi:(this.state.roi*100)      //預期報酬
+                      })
+                      
+                })
+                .then((response) => {return response.json();})
+                .then((jsonData) => { 
+                  if(jsonData.StatusCode==200 && jsonData.recommendation.length > 0){
     
-                this.state.all_data=this.all_fund_data(fund_info)
-                this.setState({all_data:this.state.all_data,flag:true})
-            }
-              else{
-              this.state.all_data=[]
-              }
-            })
+                    console.log('取得推薦')
+                    fund_info=jsonData.recommendation;
+                    console.log(fund_info);
+        
+                    this.state.all_data=this.all_fund_data(fund_info)
+                    this.setState({all_data:this.state.all_data,flag:true})
+                }
+                  else{ //預期ROI的範圍內沒有推薦的基金
+                    this.state.all_data=[]
+                    this.setState((state, props) => {
+                        return {counter: state.counter + props.step,
+                                flag:true,
+                                recommendation_text:'※由於您的預期報酬範圍內無適合之基金，因此下表為僅為依據績效報酬之基金排名。',
+                                };
+                    });
+                  }
+                })
+        }
+        else{ //若是無做過性格分析測驗，則純粹排名
+            alert('進入一般推薦基金')
+            this.state.all_data=[]
+            this.setState((state, props) => {
+                return {counter: state.counter + props.step,
+                        flag:true,
+                        };
+            });
+        }
     }
     //-------------------------------------------------------------------
 
@@ -228,6 +247,8 @@ class PagePig extends React.Component{
     return(
     <div className="card-personalize-pig">
     <PersonalizeMenu></PersonalizeMenu>
+    {!this.state.flag ? (<LoadingIndicator></LoadingIndicator>): 
+    (
     <Container>
     <Row>       
         <div className="card-personalize1">
@@ -334,7 +355,7 @@ class PagePig extends React.Component{
         </div>
     </Row>     
     </Container>
-    </div>
+    )}</div>
     
     );
     }

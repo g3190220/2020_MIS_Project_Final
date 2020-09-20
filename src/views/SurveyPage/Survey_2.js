@@ -38,7 +38,6 @@ class Surveys extends React.Component {
         else{
             if((this.state.factor!='')&&(this.state.purpose!='')&&(this.state.time!='')&&(this.state.method!='')){
                 const member_id=load_cookies("member_id");
-                // const path=`/page-survey-3/id=${member_id}`
                 const path=`/page-survey-3`
 
                 //--------投資年份------------
@@ -67,7 +66,6 @@ class Surveys extends React.Component {
                 money.push(year)
                 survey_score(arr)
                 survey_answer(money) //使用者願意投資的金額以及方式
-                console.log(money)
 
                 this.props.history.push({
                     pathname: path 

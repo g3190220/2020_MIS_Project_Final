@@ -29,7 +29,6 @@ class Surveys extends React.Component {
 
             if((this.state.experience!='')&&(this.state.product!='')){
                  const member_id=load_cookies("member_id");
-                //  const path=`/page-survey-4/id=${member_id}`
                  const path=`/page-survey-4`
                  //將此頁的分數紀錄到cookie
                  let arr = []
