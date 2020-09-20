@@ -100,6 +100,7 @@ class LiffMyTag extends React.Component{
         this.getNewTagData=this.getNewTagData.bind(this);
         this.getHistoryTagData=this.getHistoryTagData.bind(this);
         this.DeleteTag=this.DeleteTag.bind(this);
+        this.all_fund_data=this.all_fund_data.bind(this);
 
         this.state = {
           //fields: {},
@@ -129,6 +130,24 @@ class LiffMyTag extends React.Component{
       
     }
 
+  //轉變FUND 資料
+  all_fund_data(fund_info){
+    console.log("all_fund_data")
+    console.log(fund_info)
+    let fund_info_href=[]
+    for(var i=0;i<Object.keys(fund_info).length;i++){
+            fund_info_href.push(
+              {
+                'fld022':<a style={{color:'black',fontWeight:'500'}} href={'/detailfund-page/fundid=' + fund_info[i].fld022}>{fund_info[i].fld022}</a>,
+                'tagContent':fund_info[i].tagContent,
+                'Create_Date':fund_info[i].Create_Date
+      
+                });
+            };
+        console.log(fund_info_href)
+        return fund_info_href
+  }
+
   //本周新增的tag顯示
   getNewTagData(){       
         const url = "https://fundu.ddns.net:8090/getNewTag";
@@ -153,7 +172,7 @@ class LiffMyTag extends React.Component{
       try{
         tag_info=JSON.parse(jsonData.Newtag_info)
         console.log(jsonData);
-        this.state.data_thisWeek=tag_info
+        this.state.data_thisWeek=this.all_fund_data(tag_info)
         this.setState({data_thisWeek:this.state.data_thisWeek})
         //console.log(this.state.data_thisWeek)
         this.getHistoryTagData();
@@ -232,7 +251,7 @@ if(jsonData.StatusCode==200){
   tag_info=JSON.parse(jsonData.tag_info)
   
     console.log(tag_info);
-    this.state.data_history=tag_info
+    this.state.data_history=this.all_fund_data(tag_info)
     this.setState({data_history:this.state.data_history,flag:true})
     console.log(this.state.data_history)
   }

@@ -29,6 +29,14 @@ import LoadingIndicator from "views/Function/LoadingIndicator.js";
 //liff套件
 import liff from '@line/liff';
 
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+
+//覆寫CSS
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
+import { forwardRef } from 'react';
+
+
 var performance_sharpe = [];
 var performance_treynor = [];
 var performance_day = [];
@@ -39,6 +47,45 @@ var member_ID="";
 var id ="";
 var tag1_id=0;
 var tag2_id=0;
+
+const styles = () => ({
+    customDialogTitle: {
+      backgroundColor: "#f8f5c4",
+      '& h2': {
+        fontFamily:"Microsoft JhengHei",
+        fontWeight: 900,
+        fontSize:25,
+        // backgroundColor: "#f8f5c4"
+      },
+    },
+    customDialogContent:{
+      backgroundColor: "#f8f5c4",
+      '& p': {
+        fontFamily:"Microsoft JhengHei",
+        fontWeight: 600,
+        fontSize:18,
+        color: "#4d4d4d",
+      }
+
+    },
+    customDialogActions:{
+      backgroundColor: "#f8f5c4",
+      '& button': {
+        backgroundColor: "#bba57d",
+        borderColor: "#bba57d",
+      },
+    },
+    customTable: {
+      "& .MuiPaper-elevation2": {
+        color: "rgba(0, 0, 0, 0.87)",
+        transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+        backgroundColor: "#fff",
+        width: "100%",
+        fontFamily:"微軟正黑體",
+      }
+      
+    }
+});
 
 // core components
 class LineDetailFund extends React.Component{
@@ -61,8 +108,8 @@ class LineDetailFund extends React.Component{
         showtag4:false,
         colortag1:true,
         colortag2:true,
-        fund_net_CSS:'fund-value-red',
-        fund_percentage_CSS:'fund-percentage-red',
+        fund_net_CSS:'line-fund-value-red',
+        fund_percentage_CSS:'line-fund-percentage-red',
         teach1:true,
         teach2:false,
         teach3:false,
@@ -87,6 +134,10 @@ class LineDetailFund extends React.Component{
       this.handleClose=this.handleClose.bind(this);
       this.handleClickOpenAdd=this.handleClickOpenAdd.bind(this);
       this.handleCloseAdd=this.handleCloseAdd.bind(this);
+      this.getMemo = this.getMemo.bind(this);
+      this.CreateMemo=this.CreateMemo.bind(this);
+      this.handleClickOpenMemo = this.handleClickOpenMemo.bind(this);
+      this.handleCloseMemo = this.handleCloseMemo.bind(this);
       
 
     }
@@ -157,6 +208,7 @@ class LineDetailFund extends React.Component{
             if(jsonData.StatusCode==200){
                 
                 console.log(fund_info[0]);
+                this.setState({member_id_:this.props.location.state.member_ID})
 
                 //更新state並獲得以下資料
                 this.setState((state, props) => {
@@ -481,8 +533,8 @@ class LineDetailFund extends React.Component{
                     percent = '▲ '+percent;
                     console.log('正')
                     this.setState((state, props) => {
-                        return {fund_net_CSS:'fund-value-red',
-                                fund_percentage_CSS:'fund-percentage-red',
+                        return {fund_net_CSS:'line-fund-value-red',
+                                fund_percentage_CSS:'line-fund-percentage-red',
                         };
                     });
                 }
@@ -491,8 +543,8 @@ class LineDetailFund extends React.Component{
                     percent = '▼'+percent;
                     console.log('負')
                     this.setState((state, props) => {
-                        return {fund_net_CSS:'fund-value-green',
-                                fund_percentage_CSS:'fund-percentage-green',
+                        return {fund_net_CSS:'line-fund-value-green',
+                                fund_percentage_CSS:'line-fund-percentage-green',
                         };
                     });
                     
@@ -549,6 +601,7 @@ class LineDetailFund extends React.Component{
                 });
             }
             })
+            .then(()=>{this.getMemo();})
     }
 
      //新增TAG功能
@@ -557,7 +610,7 @@ class LineDetailFund extends React.Component{
         //取消DOM的預設功能
         window.event.preventDefault();
         if(!isEmpty(this.state.new_tag)){
-        let fld022 = (this.props.match.params.fundid.split('='))[1];
+        //let fld022 = (this.props.match.params.fundid.split('='))[1];
         const url = "https://fundu.ddns.net:8090/GenerateTag";
         fetch(url, {
                 method: 'POST',
@@ -568,7 +621,7 @@ class LineDetailFund extends React.Component{
                 body: JSON.stringify({
                         member_id: this.props.location.state.member_ID,
                         //member_id: member_ID,
-                        fld022: fld022,
+                        fld022: id,
                         content:this.state.new_tag,
                 })
                 
@@ -659,88 +712,108 @@ class LineDetailFund extends React.Component{
     
     }
 
-    //獲取liff id
-    // getLiffid(){
-    //     alert("hi-getliffid")
-    //     console.log(this.props.location.state)
-    //     console.log(this.props.location.state.member_ID)
-    //     liff.init({
-    //         liffId: "1654887866-eVrD8JaW" // Use own liffId
+    CreateMemo(){
+        //alert("start create memo")
+       // alert(id)
+        //alert(this.props.location.state.member_ID)
         
-    //     })
-    //     .then(() => {
-    //     if (liff.isLoggedIn()) {
-    //         liff.getProfile()
-    //         .then(profile => {
-    //             let userId = profile.userId;
-    //             liff_userid = userId;
-    //             console.log("getLiffid() end")
-    //             console.log(liff_userid)
-    //         })
-    //         .then(()=>{
-    //             this.ChangeLiffid(liff_userid)
-    //         })
-            
-    //         }
-    //     else{
-    //         alert("取得失敗")
-    //     }
-    //     })
-    //this.ChangeLiffid("Uabcd7eb5beccfbac50a8434c2e4072fc")
-    
-    
-    // }
-    //檢查Liff有無連接，並回傳userid
-    // ChangeLiffid(in_liff_userid){
-    //     //alert("start ChangeLiffid")
-    //     let member_info=[];
-    //     const url = "https://fundu.ddns.net:8090/LineLogin";////////改url
-    //     //console.log(data)
-    //     fetch(url, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                     //取得全部fund
-    //                     lineid: in_liff_userid,
-    //             })
-                
-    //         })
-    //         .then((response) => {return response.json();})
-    //         .then((jsonData) => { 
-    //         console.log(jsonData)
-    //             if(jsonData.StatusCode==200){
-    //                 alert("before parse")
-    //                 alert(jsonData.member_info)
-    //                 member_info=JSON.parse(jsonData.member_info)
-    //                 alert(member_info.member_id)
-    //                 //取得系統id了
-    //                 //this.state.member_id=member_info.member_id
-    //                 member_id=member_info.member_id
-                    
-                
-    //             }
-    //             else{
-    //                 alert("您尚未與系統連結，無法使用此功能。即將跳轉至連結頁面！")
-    //                 this.props.history.push({
-    //                     pathname: "/liff-linking"
-    //                 })
-                
-    //             }
-    //         })
-    //         .then(() => { 
-    //             alert("取得member-id")
-    //             console.log(member_id)
-    //             this.getAllData();
-    //         });
+        //alert(this.state.new_content)
+        
+        //let fld022 = (this.props.match.params.fundid.split('='))[1];
+        const url = "https://fundu.ddns.net:8090/Memo";
+        fetch(url, {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              content: this.state.new_content,
+              userid: this.props.location.state.member_ID,
+              fld022: id,
+            //   fld022: this.state.fund_fld022_track,
+          })
+          
+        })
+        .then((response) => {return response.json();})
+        .then((jsonData) => {
+          console.log(jsonData)
+          if(jsonData.StatusCode==200){
+            alert("成功更新備忘錄！")
+            window.location.reload(true)  //更新狀態後重新整理頁面
+          }
+          else{
+            alert("error")
+          }
+        })
+  
+      }
+  
 
-    // }
+    getMemo(fld022,chname){
+        const url = "https://fundu.ddns.net:8090/getMemo";
+        //console.log(fld022)
+        //let fld = (this.props.match.params.fundid.split('='))[1];
+        fetch(url, {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              userid: this.props.location.state.member_ID,
+              fld022: id,
+            //   fld022: fld022,
+          })
+          
+        })
+        .then((response) => {return response.json();})
+        .then((jsonData) => {
+          console.log(jsonData)
+          if(jsonData.StatusCode==200){
+            var memo_info=[];
+            
+            //memo_info=JSON.parse(jsonData.info)
+            for(var i = 0; i < jsonData.info.length; i++){
+                memo_info.push(JSON.parse(jsonData.info[i]))
+            }
+            if(isEmpty(memo_info[0][0].content)){
+              this.setState({original_content:"您尚未新增備忘錄！"})
+            }
+            else{
+              this.setState({original_content:memo_info[0][0].content})
+            }
+           
+           this.setState({fund_fld022_track:fld022})
+           this.setState({chname:chname})
+            
+  
+          }
+          else{
+            this.setState({original_content:"您尚未新增備忘錄！"})
+            this.setState({fund_fld022_track:fld022})
+            this.setState({chname:chname})
+          }
+          this.setState({initial:true})
+        })
+    }
+
+    handleClickOpenMemo(){
+        this.setState({
+          openMemo: true
+        });
+      }
+    handleCloseMemo(){
+        this.setState({
+          openMemo: false
+        });
+      }
+
+    
     
 
     render(){     //render的意義為何??(待查清) //猜想：render預設的渲染方式，網頁一開始執行的
-        
+        const {classes} = this.props;
         var config_net = {
 
             chart : {
@@ -834,18 +907,67 @@ class LineDetailFund extends React.Component{
             {
             !this.state.initial ? (<LoadingIndicator></LoadingIndicator>): 
             (
-            <div className='allfund-menu'>
+            <div className='line-allfund-menu'>
             <Container>
-            <div className='sub-menu' id='ino_parent'>
+            <div className='line-sub-menu' id='ino_parent'>
             <Row>
-                <div className='sub-sub-detail'  id='info'>
+                <div className='line-sub-sub-detail'  id='info'>
                 <Row >
-                    <Col xs={12} md={9}><label className='fund-name'>{this.state.fund_name}</label></Col>  {/*從資料庫讀取基金的名字*/}
-                    <Col xs={12} md={3}>
-                    <div className='button-position'>
-                        <input type="button" className={this.state.track_state==1 ? "followBtnTrue" : "followBtnFalse"} onClick={this.togglestate,this.CreateTrack} value={this.state.track_state==1 ? "√ 已追蹤" : "+ 追蹤"}></input>
+                    <Col xs={12} md={9}>
+                        <div className='line-fund-name-position-1'><label className='line-fund-name'>{this.state.fund_name}</label></div>
+                        <div className='line-fund-name-position-2'><BorderColorIcon className="memo" onClick={this.handleClickOpenMemo}  style={{cursor: 'pointer'}}/></div>
+                    </Col>  {/*從資料庫讀取基金的名字*/}
+                    <div className="memo_content">
+                  <Dialog   
+                    open={this.state.openMemo} 
+                    keepMounted
+                    onClose={this.handleCloseMemo} 
+                    aria-labelledby="form-dialog-title"
+                    fullWidth={true}
+                    maxWidth={'xs'}
+                    classes={{root: classes.customDialog}}
+                   >
+                     
+                    <DialogTitle 
+                      id="form-dialog-title" 
+                      classes={{root: classes.customDialogTitle}}
+                    >
+                      <BorderColorIcon></BorderColorIcon>{this.state.fund_name}
+                      <hr className="line-hr"></hr>
+                      </DialogTitle>
+                      
+                    <DialogContent classes={{root: classes.customDialogContent}}>
+                      <DialogContentText >
+                          {this.state.original_content}
+                      </DialogContentText>
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="請輸入備忘錄內容"
+                        multiline
+                        rowsMax={4}
+                        type="string"
+                        // defaultValue={this.state.content}
+                        onChange={this.handleChange('new_content')} //更新新增內容
+                        fullWidth
+                      />
+                    </DialogContent>
+                    <DialogActions classes={{root: classes.customDialogActions}}>
+                      <Button onClick={this.handleCloseMemo} color="primary">
+                        Cancel
+                      </Button>
+                      <Button onClick={this.CreateMemo} color="primary">
+                        Save
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </div>
+                <Row>
+                    <div className='line-button-position'>
+                        <input type="button" className={this.state.track_state==1 ? "line-followBtnTrue" : "line-followBtnFalse"} onClick={this.togglestate,this.CreateTrack} value={this.state.track_state==1 ? "√ 已追蹤" : "+ 追蹤"}></input>
                     </div> 
-                    </Col>
+                </Row>      
                 </Row> 
                 {/* <Row>
                     <div className='button-position'>
@@ -853,13 +975,13 @@ class LineDetailFund extends React.Component{
                     </div> 
                 </Row> */}
                 <Row>
-                    <div className='tag-position'>
+                    <div className='line-tag-position'>
                         <Row>
                             <Col xs={12} md={12}>
-                            <div className='tag-label-position'><label className='tag-label' style={{display: this.state.showtag3 ? 'inline' : 'none', color:"#444444"}}><a className="delete-tag" >{this.state.tag3}</a></label></div>
-                                <div className='tag-label-position'><label className='tag-label' style={{display: this.state.showtag4 ? 'inline' : 'none',color:"#444444"}}><a className="delete-tag" >{this.state.tag4}</a></label></div>
-                                <div className='tag-label-position'><label className='tag-label' style={{display: this.state.showtag2 ? 'inline' : 'none', color:"#CD5C5C"}}><a className="delete-tag"  onClick={()=>this.handleClickOpen(tag2_id,this.state.fundid)} style={{cursor: 'pointer'}}>{this.state.tag2}</a></label></div>
-                                <div className='tag-label-position'><label className='tag-label' style={{display: this.state.showtag1 ? 'inline' : 'none',color:"#CD5C5C"}}><a className="delete-tag" onClick={()=>this.handleClickOpen(tag1_id,this.state.fundid)} style={{cursor: 'pointer'}}>{this.state.tag1}</a></label></div></Col>
+                            <div className='line-tag-label-position'><label className='line-tag-label' style={{display: this.state.showtag3 ? 'inline' : 'none', color:"#444444"}}><a className="line-delete-tag" >{this.state.tag3}</a></label></div>
+                                <div className='line-tag-label-position'><label className='line-tag-label' style={{display: this.state.showtag4 ? 'inline' : 'none',color:"#444444"}}><a className="line-delete-tag" >{this.state.tag4}</a></label></div>
+                                <div className='line-tag-label-position'><label className='line-tag-label' style={{display: this.state.showtag2 ? 'inline' : 'none', color:"#CD5C5C"}}><a className="line-delete-tag"  onClick={()=>this.handleClickOpen(tag2_id,this.state.fundid)} style={{cursor: 'pointer'}}>{this.state.tag2}</a></label></div>
+                                <div className='line-tag-label-position'><label className='line-tag-label' style={{display: this.state.showtag1 ? 'inline' : 'none',color:"#CD5C5C"}}><a className="line-delete-tag" onClick={()=>this.handleClickOpen(tag1_id,this.state.fundid)} style={{cursor: 'pointer'}}>{this.state.tag1}</a></label></div></Col>
                         </Row>  
                         <Dialog
                         open={this.state.open}
@@ -885,36 +1007,36 @@ class LineDetailFund extends React.Component{
                 </Dialog>     
                     </div>
                 </Row>  
-                <div className="detatil-background">
+                <div className="line-detatil-background">
                     <Row >
                     
                         <Col xs={12} md={{size: 5}}>
-                            <div className='fund-currency-position'>
-                                <label className={this.state.fund_net_CSS}>{this.state.new_net}<span className='fund-currency'>{this.state.fund_currency}</span></label>
+                            <div className='line-fund-currency-position'>
+                                <label className={this.state.fund_net_CSS}>{this.state.new_net}<span className='line-fund-currency'>{this.state.fund_currency}</span></label>
                             </div> {/*從資料庫讀取基金的淨值*/}
                         </Col>
                         <Col xs={12} md={{size: 5}}>
-                            <div className='fund-percentage-position'>
+                            <div className='line-fund-percentage-position'>
                                 <label className={this.state.fund_percentage_CSS}>{this.state.fund_percent}%​<p></p>{this.state.fund_gain}</label>
                             </div>
                         </Col>
                     </Row> 
-                    <Row  className='fund-data'>
+                    <Row  className='line-fund-data'>
                         <span><label>績效：3月：</label><label>{this.state.History_ROI_3M}%</label><label>&nbsp;&nbsp;&nbsp;</label><label>6月：</label><label>{this.state.History_ROI_6M}%</label><label>&nbsp;&nbsp;&nbsp;</label><label>1年：</label><label>{this.state.History_ROI_12M}%</label></span>
                     </Row>
-                    <Row className='fund-data'>
+                    <Row className='line-fund-data'>
                         <span><label> 成立日期：</label><label>{this.state.fund_startdate}</label></span>
                     </Row>
-                    <Row className='fund-data'>
+                    <Row className='line-fund-data'>
                     <span><label>基金規模：</label><label>{this.state.fund_currency} {this.state.fund_scale}</label></span>
                 </Row>
                 </div>
                 </div>
             </Row>
             <Row>
-                <div className='sub-sub-tag'>
+                <div className='line-sub-sub-tag'>
                 <Row>
-                    <Col xs={12} md={12}><div className='input-tag-btn'><button className='tag-btn' onClick={this.handleClickOpenAdd} >新增自己的TAG➥</button></div></Col>
+                    <Col xs={12} md={12}><div className='line-input-tag-btn'><button className='line-tag-btn' onClick={this.handleClickOpenAdd} >新增自己的TAG➥</button></div></Col>
                     {/* <Col xs={6} md={9}><div className='input-tag'><input onChange={this.handleChange('new_tag')} className='input-fieled' size="8" maxlength="8"></input></div></Col>        */}
                     <Dialog
                                 open={this.state.open_add}
@@ -952,8 +1074,8 @@ class LineDetailFund extends React.Component{
             <Row></Row>
 
             <Row>
-                <div className='sub-sub-basic-info'>               
-                    <table className='fund-basic-info' border='2' cellpadding="4">
+                <div className='line-sub-sub-basic-info'>               
+                    <table className='line-fund-basic-info' border='2' cellpadding="4">
                         <tr>
                             <th>基金名稱</th>
                             <td>{this.state.fund_name}</td>
@@ -1013,7 +1135,11 @@ class LineDetailFund extends React.Component{
         )};
 
 }    
-export default LineDetailFund;
+//export default LineDetailFund;
+LineDetailFund.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+export default withStyles(styles)(LineDetailFund);
 //export default withRouter(LineDetailFund);
 
 

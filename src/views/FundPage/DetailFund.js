@@ -342,8 +342,8 @@ class DetailFund extends React.Component{
             this.setState({fund_fld022_track:fld022})
             this.setState({chname:chname})
           }
+          this.setState({initial:true})
         })
-        .then(()=>{this.handleClickOpenMemo()})
     }
 
     handleClickOpenMemo(){
@@ -741,11 +741,12 @@ class DetailFund extends React.Component{
                             history_beta:beta,
                             history_SD:SD,
                             history_performance_day:day,
-                            initial:true};
+                            };
                 });
             }
             })
-    }
+            .then(()=>{this.getMemo();})
+}
 
     tag_link(){
         let fund_id = (this.props.match.params.fundid.split('='))[1];
@@ -958,7 +959,6 @@ class DetailFund extends React.Component{
             
             <div>
             {
-            isEmpty(load_cookies("member_id")) ? <CheckLogin></CheckLogin> :
             !this.state.initial ? (<LoadingIndicator></LoadingIndicator>): 
             (
             <div className='allfund-menu'>
@@ -969,7 +969,7 @@ class DetailFund extends React.Component{
                 <div className='sub-sub-detail'  id='info'>
                 <Row >
                     <Col xs={7} md={9}> <label className='fund-name'>{this.state.fund_name}
-                    <BorderColorIcon className="memo" onClick={this.getMemo}/>
+                    <BorderColorIcon className="memo" onClick={this.handleClickOpenMemo}  style={{cursor: 'pointer'}}/>
                     </label>  {/*從資料庫讀取基金的名字*/}
                     </Col>
 
