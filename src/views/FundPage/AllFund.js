@@ -537,7 +537,7 @@ class AllFund extends React.Component {
             fund_info=JSON.parse(jsonData.fund_info)
             console.log(fund_info);
 
-            this.state.all_data=this.all_fund_data(fund_info)
+            this.state.all_data=fund_info
             this.setState({all_data:this.state.all_data,flag:true})
         }
           else{
@@ -838,18 +838,18 @@ class AllFund extends React.Component {
               maxBodyHeight: '420px'
             }}
             actions={[
-              // { 
+              { 
                 
-              //   //hidden:true,
-              //   icon: () => <SearchIcon color="action" />,
-              //   tooltip: 'SEEFUND',
-              //   onClick: (event, rowData) =>  this.props.history.push({
+                //hidden:true,
+                icon: () => <SearchIcon color="action" />,
+                tooltip: 'SEEFUND',
+                onClick: (event, rowData) =>  this.props.history.push({
                
-              //   pathname: '/detailfund-page/fundid='+rowData.Fund_fld022,
+                pathname: '/detailfund-page/fundid='+rowData.Fund_fld022,
                   
-              //   })
+                })
                
-              // },
+              },
               { //這邊改比較基金按鈕
                 
                 //hidden:true,
