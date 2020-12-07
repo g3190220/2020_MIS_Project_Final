@@ -47,7 +47,7 @@ class PageCharacterAnalysis extends React.Component{
 
         //取得性格分析結果
         let data = []
-        const url = "https://fundu.ddns.net:8090/getCharacteristic";////////改url
+        const url = "https://ncufundu.ddns.net:8090/getCharacteristic";////////改url
         //console.log(data)
         fetch(url, {
                 method: 'POST',

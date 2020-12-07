@@ -215,7 +215,7 @@ class LiffMyFund extends React.Component{
     
 
     getTrackData(){  //取得追蹤基金
-      const url = "https://fundu.ddns.net:8090/getTrack";
+      const url = "https://ncufundu.ddns.net:8090/getTrack";
       fetch(url, {
           method: 'POST',
           headers: {
@@ -279,7 +279,7 @@ class LiffMyFund extends React.Component{
 
 
     CreateMemo(){
-      const url = "https://fundu.ddns.net:8090/Memo";
+      const url = "https://ncufundu.ddns.net:8090/Memo";
       fetch(url, {
         method: 'POST',
         headers: {
@@ -309,7 +309,7 @@ class LiffMyFund extends React.Component{
 
 
     getMemo(fld022,chname){
-      const url = "https://fundu.ddns.net:8090/getMemo";
+      const url = "https://ncufundu.ddns.net:8090/getMemo";
       console.log(fld022)
       console.log(chname)
       fetch(url, {
@@ -387,7 +387,7 @@ class LiffMyFund extends React.Component{
   //檢查Liff有無連接，並回傳userid
   ChangeLiffid(){
     let member_info=[];
-    const url = "https://fundu.ddns.net:8090/LineLogin";////////改url
+    const url = "https://ncufundu.ddns.net:8090/LineLogin";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',

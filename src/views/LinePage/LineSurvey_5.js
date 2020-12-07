@@ -10,6 +10,9 @@ import { Button, Card, Form, Input, Container, Row, Col} from "reactstrap";
 import TextField from '@material-ui/core/TextField';
 import { load_cookies, survey_answer } from 'views/Function/Cookie_function.js' // 引入cookies
 
+//liff套件
+import liff from '@line/liff';
+
 class Surveys extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +23,8 @@ class Surveys extends React.Component {
             score_2:load_cookies("score_2"),
             score_3:load_cookies("score_3"),
             score_4:load_cookies("score_4"),
-            score_page:0
+            score_page:0,
+            showButton:'visible',
         };
 
         this.handlesummit = this.handlesummit.bind(this)
@@ -41,51 +45,54 @@ class Surveys extends React.Component {
                  survey_answer(arr);
 
                  if(total <= 34){
-                    ans = '您的結果為：保守型';
                     result = '保守型'
                  }
                  else if(total <=45){
-                    ans = '您的結果為：穩健型';
                     result = '穩健型'
                  }
                  else if(total <=58){
-                    ans = '您的結果為：成長型';
                     result = '成長型'
                 }
                 else{
-                    ans = '您的結果為：積極型';
                     result = '積極型'
                 }
-                alert(ans);
+                alert('性格分析問券填寫完畢！請自行關閉頁面。');
+                //alert(this.props.location.state.member_ID)
+                //alert(load_cookies("ROI"))
+                //alert(result)
+                //alert(total)
+                //-----------更新或新增性格分析結果-----------------------------------------------------------------
+                const url = "https://ncufundu.ddns.net:8090/set_characteristic";////////改url
+                //console.log(data)
+                fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            //memberID: load_cookies("member_id"),
+                            memberID: this.props.location.state.member_ID,
+                            exceptedreturn: load_cookies("ROI"),
+                            characteristic:result,
+                            score: total,
+                        })
+                    })
+                    .then((response) => {return response.json();})
+                    .then((jsonData) => {
+                    //console.log(this)
+                    console.log(jsonData)
+                    console.log("fetch完")
+                    if(jsonData.StatusCode==200){
+                        console.log("成功更改！")
+                        this.setState({showButton:'hidden'})
+                        liff.closeWindow();
+                    }
+                    })
             }
             else{
-                alert('請完全填選後再按下一頁！')
+                alert('請完全填選後再按submit！')
             }
-
-            //-----------更新或新增性格分析結果-----------------------------------------------------------------
-            const url = "https://fundu.ddns.net:8090/set_characteristic";////////改url
-            //console.log(data)
-            fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        //memberID: load_cookies("member_id"),
-                        memberID: this.props.location.state.member_ID,
-                        exceptedreturn: 100,
-                        characteristic:result,
-                        score: total,
-                    })
-                })
-                .then((response) => {return response.json();})
-                .then((jsonData) => {
-                //console.log(this)
-                console.log(jsonData)
-                if(jsonData.StatusCode==200){
-                }
-                })
     }
 
     componentDidMount() {
@@ -159,9 +166,9 @@ class Surveys extends React.Component {
                 </Row>
                 
                 <Row>
-                <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious}>previous</button></div>
+                    <div className='line-previous-btn-position'><button className='line-previous-btn' onClick={this.handleprevious} style={{visibility:this.state.showButton}}>previous</button></div>
                     
-                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit}>sunbmit</button></div>
+                    <div className='line-submit-btn-position'><button className='line-submit-btn' onClick={this.handlesummit} style={{visibility:this.state.showButton}}>submit</button></div>
                 </Row>
                 </div>
             </div>

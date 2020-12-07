@@ -4,7 +4,7 @@ import isEmpty from "views/Function/isEmpty.js"
 import React from 'react';
 
 function getPDData(){
-    const url = "https://fundu.ddns.net:8090/check_LoginStatus";////////改url
+    const url = "https://ncufundu.ddns.net:8090/check_LoginStatus";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',

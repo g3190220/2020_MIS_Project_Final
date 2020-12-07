@@ -39,37 +39,37 @@ class Surveys extends React.Component {
 
     //獲取liff id
     getLiffid(){
-        // let liff_userid;
-        // liff.init({
-        // liffId: "1654887866-BeAzZ7ov" // Use own liffId
-        // })
-        // .then(() => {
-        // if (liff.isLoggedIn()) {
-        //     liff.getProfile()
-        //     .then(profile => {
-        //         const userId = profile.userId
-        //         //取得liff_userid;
-        //         liff_userid=userId;
-        //     })
-        //     .then(()=>{this.setState({liff_userid:liff_userid,flag:true})})
-        //     .then(()=>{
-        //     //獲取liff id
-        //     console.log("getLiffid()後")
-        //     console.log(this.state.liff_userid)
-        //         this.ChangeLiffid()
-        //     })
-        //     }
-        // else{
-        //     alert("取得失敗")
-        // }
-        // })
-        this.setState({liff_userid:"Uabcd7eb5beccfbac50a8434c2e4072fc",flag:true})
+        let liff_userid;
+        liff.init({
+        liffId: "1654887866-BeAzZ7ov" // Use own liffId
+        })
+        .then(() => {
+        if (liff.isLoggedIn()) {
+            liff.getProfile()
+            .then(profile => {
+                const userId = profile.userId
+                //取得liff_userid;
+                liff_userid=userId;
+            })
+            .then(()=>{this.setState({liff_userid:liff_userid,flag:true})})
+            .then(()=>{
+            //獲取liff id
+            console.log("getLiffid()後")
+            console.log(this.state.liff_userid)
+                this.ChangeLiffid()
+            })
+            }
+        else{
+            alert("取得失敗")
+        }
+        })
+        //this.setState({liff_userid:"Uabcd7eb5beccfbac50a8434c2e4072fc",flag:true})
         
     }
     //檢查Liff有無連接，並回傳userid
     ChangeLiffid(){
         let member_info=[];
-        const url = "https://fundu.ddns.net:8090/LineLogin";////////改url
+        const url = "https://ncufundu.ddns.net:8090/LineLogin";////////改url
         //console.log(data)
         fetch(url, {
                 method: 'POST',
@@ -91,6 +91,7 @@ class Surveys extends React.Component {
                 //取得系統id了
                 member_id=member_info.member_id
                 //alert(this.state.member_id)
+                console.log("取得member_id!")
                 console.log(member_id)
                 
                 
@@ -109,7 +110,7 @@ class Surveys extends React.Component {
     //-----------------下一頁--------------------------------
     handlesummit(){
         if((this.state.age!='')&&(this.state.job!='')&&(this.state.income!='')&&(this.state.education!='')){
-            const member_id=load_cookies("member_id");
+            //const member_id=load_cookies("member_id");
             // const path=`/page-survey-2/id=${member_id}`
             const path=`/liff-survey2`
 

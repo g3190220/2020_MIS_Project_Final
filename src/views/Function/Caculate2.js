@@ -61,7 +61,7 @@ class Caculate2 extends React.Component{
             var _period=this.state.period;
             var _return=0;
             //取得rate資料
-            const url = "https://fundu.ddns.net:8090/CalculateRate";
+            const url = "https://ncufundu.ddns.net:8090/CalculateRate";
             fetch(url, {
                 method: 'POST',
                 headers: {

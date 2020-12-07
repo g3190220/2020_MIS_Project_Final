@@ -150,7 +150,7 @@ class LiffMyTag extends React.Component{
 
   //本周新增的tag顯示
   getNewTagData(){       
-        const url = "https://fundu.ddns.net:8090/getNewTag";
+        const url = "https://ncufundu.ddns.net:8090/getNewTag";
         fetch(url, {
           method: 'POST',
           headers: {
@@ -193,7 +193,7 @@ class LiffMyTag extends React.Component{
 
   //本周tag刪除
   DeleteTag(in_tagid,in_fld022){
-        const url = "https://fundu.ddns.net:8090/DeleteTag";
+        const url = "https://ncufundu.ddns.net:8090/DeleteTag";
         fetch(url, {
           method: 'POST',
           headers: {
@@ -226,7 +226,7 @@ class LiffMyTag extends React.Component{
   //歷史新增tag顯示
   getHistoryTagData(){
         
-    const url = "https://fundu.ddns.net:8090/getTag";
+    const url = "https://ncufundu.ddns.net:8090/getTag";
     fetch(url, {
       method: 'POST',
       headers: {

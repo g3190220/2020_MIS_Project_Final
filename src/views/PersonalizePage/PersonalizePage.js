@@ -137,7 +137,7 @@ class PersonalizePage extends React.Component {
   //取得個人資料
   getPDData(){
     let member_info=[];
-    const url = "https://fundu.ddns.net:8090/check_LoginStatus";////////改url
+    const url = "https://ncufundu.ddns.net:8090/check_LoginStatus";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',

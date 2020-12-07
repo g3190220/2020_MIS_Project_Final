@@ -64,7 +64,7 @@ class Surveys extends React.Component {
                 alert('性格分析問券填寫完畢！')
 
                 //-----------更新或新增性格分析結果-----------------------------------------------------------------
-                const url = "https://fundu.ddns.net:8090/set_characteristic";////////改url
+                const url = "https://ncufundu.ddns.net:8090/set_characteristic";////////改url
                 console.log(load_cookies("ROI"))
                 fetch(url, {
                         method: 'POST',

@@ -65,7 +65,7 @@ class LineLinking extends React.Component {
         alert(this.state.password)
         this.state.errors = {};
         //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = "https://fundu.ddns.net:8090/Signin";
+        const url = "https://ncufundu.ddns.net:8090/Signin";
         //console.log(data)
         fetch( url, {
               method: 'POST',

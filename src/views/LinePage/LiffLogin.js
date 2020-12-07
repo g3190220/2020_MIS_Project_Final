@@ -59,7 +59,7 @@ class LiffLogin extends React.Component {
   //存取liff-userid至資料庫
   setLineID(nounce,liff_userid){
     console.log("start setLineID")
-    const url = "https://fundu.ddns.net:8090/setLineID";
+    const url = "https://ncufundu.ddns.net:8090/setLineID";
         //console.log(data)
     fetch( url, {
               method: 'POST',
@@ -132,7 +132,7 @@ class LiffLogin extends React.Component {
     { 
         console.log("準備fetch")
         this.state.errors = {};
-        const url = "https://fundu.ddns.net:8090/Signin";
+        const url = "https://ncufundu.ddns.net:8090/Signin";
         fetch( url, {
               method: 'POST',
               headers: {

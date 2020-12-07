@@ -485,7 +485,7 @@ class AllFund extends React.Component {
 
   //Check Login
   CheckLogin(){
-    const url = "https://fundu.ddns.net:8090/check_LoginStatus";////////改url
+    const url = "https://ncufundu.ddns.net:8090/check_LoginStatus";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',
@@ -516,7 +516,7 @@ class AllFund extends React.Component {
   getAllFundData(){
     let fund_info=[];
     //除淨值的資料
-    const url = "https://fundu.ddns.net:8090/getFundInfo";////////改url
+    const url = "https://ncufundu.ddns.net:8090/getFundInfo";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',
@@ -545,7 +545,7 @@ class AllFund extends React.Component {
           }
         })
       //抓取淨值資料
-      const url2 = "https://fundu.ddns.net:8090/getFundInfo";////////改url
+      const url2 = "https://ncufundu.ddns.net:8090/getFundInfo";////////改url
   }
 
   
@@ -566,7 +566,7 @@ class AllFund extends React.Component {
   filterShow(){
     let fund_info=[];
     //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://fundu.ddns.net:8090/Search_Fund";////////改url
+    const url = "https://ncufundu.ddns.net:8090/Search_Fund";////////改url
     //console.log(data)
     fetch(url, {
               method: 'POST',

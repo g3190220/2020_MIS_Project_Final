@@ -212,7 +212,7 @@ class LiffRegister extends React.Component {
     if(this.handleValidation()) 
     {
         //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = "https://fundu.ddns.net:8090/CreateUser";
+        const url = "https://ncufundu.ddns.net:8090/CreateUser";
         //console.log(data)
         fetch(url, {
               method: 'POST',

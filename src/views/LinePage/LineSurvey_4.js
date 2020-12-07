@@ -91,7 +91,11 @@ class Surveys extends React.Component {
                     console.log(this.state.invest_money/p)
                     console.log(this.state.invest_money/s)
                 }
-                survey_answer(expect_return);
+                console.log("expect_return = "+ expect_return)
+                let arr2 = []
+                arr2.push(expect_return)
+                arr2.push(this.state.invest_method)
+                survey_answer(arr2);
                 //-----------------------------------------
 
                  this.props.history.push({

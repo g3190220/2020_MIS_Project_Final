@@ -187,7 +187,7 @@ class LineDetailFund extends React.Component{
         //id="971976";
         //id = this.props.location.state.fundid;
         console.log(id)
-        const url = "https://fundu.ddns.net:8090/getFundInfo";////////改url
+        const url = "https://ncufundu.ddns.net:8090/getFundInfo";////////改url
         //console.log(data)
         fetch( url, {
                 method: 'POST',
@@ -239,7 +239,7 @@ class LineDetailFund extends React.Component{
         console.log(id)
         id = (this.props.location.pathname.split('='))[1];
         let fund_info=[];
-        const url = "https://fundu.ddns.net:8090/getTrack";
+        const url = "https://ncufundu.ddns.net:8090/getTrack";
         fetch(url, {
             method: 'POST',
             headers: {
@@ -292,7 +292,7 @@ class LineDetailFund extends React.Component{
 
 
     CreateTrack(){  //建立追蹤基金
-        const url = "https://fundu.ddns.net:8090/CreateTrack";
+        const url = "https://ncufundu.ddns.net:8090/CreateTrack";
         id = (this.props.location.pathname.split('='))[1];
         console.log(id)
         console.log(this.props.location.state.member_ID)
@@ -323,7 +323,7 @@ class LineDetailFund extends React.Component{
 
     getTag(){
         console.log(id)
-        const url = "https://fundu.ddns.net:8090/getTag";
+        const url = "https://ncufundu.ddns.net:8090/getTag";
         fetch(url, {
                 method: 'POST',
                 headers: {
@@ -372,7 +372,7 @@ class LineDetailFund extends React.Component{
     getMyTag(){
         //let member_id=load_cookies("member_id")
         let id = (this.props.match.params.fundid.split('='))[1];
-        const url = "https://fundu.ddns.net:8090/getTag";
+        const url = "https://ncufundu.ddns.net:8090/getTag";
         fetch(url, {
         method: 'POST',
         headers: {
@@ -502,7 +502,7 @@ class LineDetailFund extends React.Component{
 
     getnet(){
         let fund_net=[];
-        const url2 = "https://fundu.ddns.net:8090/getNetWorth";////////改url
+        const url2 = "https://ncufundu.ddns.net:8090/getNetWorth";////////改url
         //console.log(data)
         fetch(url2, {
                 method: 'POST',
@@ -568,7 +568,7 @@ class LineDetailFund extends React.Component{
 
     getROI(){
         let fund_return=[];
-        const url2 = "https://fundu.ddns.net:8090/getReturn";////////改url
+        const url2 = "https://ncufundu.ddns.net:8090/getReturn";////////改url
         //console.log(data)
         fetch(url2, {
                 method: 'POST',
@@ -611,7 +611,7 @@ class LineDetailFund extends React.Component{
         window.event.preventDefault();
         if(!isEmpty(this.state.new_tag)){
         //let fld022 = (this.props.match.params.fundid.split('='))[1];
-        const url = "https://fundu.ddns.net:8090/GenerateTag";
+        const url = "https://ncufundu.ddns.net:8090/GenerateTag";
         fetch(url, {
                 method: 'POST',
                 headers: {
@@ -677,7 +677,7 @@ class LineDetailFund extends React.Component{
             //alert(this.props.location.state.member_ID)
             //alert(in_tagid)
             //alert(in_fld022)
-            const url = "https://fundu.ddns.net:8090/DeleteTag";
+            const url = "https://ncufundu.ddns.net:8090/DeleteTag";
             fetch(url, {
               method: 'POST',
               headers: {
@@ -720,7 +720,7 @@ class LineDetailFund extends React.Component{
         //alert(this.state.new_content)
         
         //let fld022 = (this.props.match.params.fundid.split('='))[1];
-        const url = "https://fundu.ddns.net:8090/Memo";
+        const url = "https://ncufundu.ddns.net:8090/Memo";
         fetch(url, {
           method: 'POST',
           headers: {
@@ -751,7 +751,7 @@ class LineDetailFund extends React.Component{
   
 
     getMemo(fld022,chname){
-        const url = "https://fundu.ddns.net:8090/getMemo";
+        const url = "https://ncufundu.ddns.net:8090/getMemo";
         //console.log(fld022)
         //let fld = (this.props.match.params.fundid.split('='))[1];
         fetch(url, {

@@ -10,7 +10,7 @@ function DemoFooter() {
         <Row>
           <div className="introduction">
             <h4>關於我們</h4>
-            <p>中央大學資訊管理學系 學生團隊</p>
+            
             <h4>聯絡我們</h4>
             <p>Email：fundu@gmail.com</p>
             <div className="copyright_line"></div>
